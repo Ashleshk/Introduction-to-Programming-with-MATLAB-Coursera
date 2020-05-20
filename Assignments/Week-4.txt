@@ -1,0 +1,30 @@
+function [a,b,c,d]=corners(x)
+
+a=x(1);
+b=x(1,end);
+c=x(end,1);
+d=x(end);
+
+
+end
+
+A = randi(100,4,5)
+
+[top_left, top_right, bottom_left, bottom_right] = corners(A)
+
+B = [1; 2]
+[top_left, top_right, bottom_left, bottom_right] = corners(B)
+
+
+TAXI FARE
+function fare= taxi_fare(d,t)
+
+d=ceil(d);
+t=ceil(t);
+D=ceil(d-1);
+
+fare=5+2*D+0.25*t;
+
+end
+
+fare = taxi_fare(3.5,2.25)
