@@ -1,0 +1,14 @@
+Matrix Indexing Practice
+
+A = [1:5; 6:10; 11:15; 16:20];
+
+v=A(:,2)
+
+A(4,:)=0
+
+Matrix Arithmetic
+A = [1:5; 6:10; 11:15; 16:20];
+
+A = [1 1 1 1]*A ;
+
+result= A*[1;1;1;1;1];
