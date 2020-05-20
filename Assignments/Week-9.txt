@@ -1,0 +1,65 @@
+Write a function called get_distance that accepts two character vector inputs 
+representing the names of two cities. The function returns the distance between 
+them as an output argument called distance.
+
+function distance = get_distance(a,b)
+[~,text,raw] = xlsread('Distances.xlsx');
+for i=2:size(raw,1)
+    if strcmp(text{i,1}, a)
+        break
+    end
+end
+if i>=size(raw,1)
+    distance=-1;
+else
+    for j=2:size(raw,2)
+        if strcmp(text{1,j}, b)
+            distance=raw{i,j};
+            break
+        end
+    end
+    if j>=size(raw,2)
+        distance = -1;
+    end
+end
+
+distance = get_distance('Seattle, WA','Miami, FL')
+**************************************************************************************
+ASSIGNMENT: TEXT FILES Write a function called char_counter that counts the number
+ of a certain character in a text file. The function takes two input arguments, 
+fname, a char vector of the filename and character, the char it counts in the file.
+
+function charnum=char_counter(fname,character)
+fid=fopen(fname,'rt');
+if fid<0 || ~ischar(character) %checks if the file is valid and if it is a visible character or not using OR operator
+    charnum=-1;
+    return;
+end
+x=fscanf(fid,'%c'); %fscanf scans the entire file and stores it in a column vector x
+charnum=length(find(x==character)); %find() finds all the characters that are required and stores the indices in a vector. The length of this vector gives the number of characters
+end
+
+type('simple.txt')
+
+charnum = char_counter('simple.txt','a')
+
+charnum = char_counter('Frankenstein-by-Shelley.txt','?')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
