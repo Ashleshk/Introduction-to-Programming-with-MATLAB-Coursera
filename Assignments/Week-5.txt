@@ -1,0 +1,22 @@
+minimax Function
+
+function [mmr,mmm]=minimax(A)
+
+mmt=[max(A,[],2)-min(A,[],2)];
+
+mmr=mmt'
+
+mmm=max(A,[],"all")-min(A,[],"all")
+
+[mmr, mmm] = minimax([1:4;5:8;9:12])
+
+
+TRIO FUNCTION
+function T = trio (n, m) 
+T = randi (10, (3 * n) , m);
+T (1:n,:) = 1;
+T ((n+(1:n)),:) = 2;
+T (n+(n+(1:n)):end,:) = 3;
+end
+
+T = trio(2,4)
