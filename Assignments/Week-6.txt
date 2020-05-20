@@ -1,0 +1,102 @@
+Write a function called picker that takes three input arguments called condition, 
+in1 and in2 in this order. The argument condition is a logical. If it is true, the
+ function assigns the value of in1 to the output argument out, otherwise, it assigns
+
+
+function out= picker(cond,in1,in2)
+if cond==1
+    out=in1;
+else
+    out=in2;
+end
+
+out = picker(true,1,2)
+
+out = picker(false,1,2)
+********************************************************************************
+Write a function called eligible that helps the admission officer of the
+ Graduate School decide whether the applicant is eligible for admission
+ based on GRE scores. The function takes two positive scalars called v and q a
+s in
+
+sol:
+function admit=eligible(v,q)
+m=(v+q)/2;
+if (m>=92&(v>88 & q>88))
+    admit=true;
+else
+    admit=false;
+end
+
+admit = eligible(96,89)
+
+admit = eligible(88,99)
+
+admit = eligible(92,91)
+
+*******************************************************************************
+Write a function called under_age that takes two positive integer scalar arguments:
+ age that represents someone's age, and limit that represents an age limit. The 
+function returns true if the person is younger than the age limit. If the second
+ arg
+
+function x = under_age(age,limit)
+if nargin < 2
+    limit = 21;
+    if age < limit
+        x = true;
+    else
+        x = false;
+    end
+end
+if nargin == 2
+    if age < limit
+        x = true;
+    else
+        x = false;
+    end
+end
+
+too_young = under_age(18,18)
+
+too_young = under_age(20)
+
+************************************************************************************
+Write a function called valid_date that takes three positive integer scalar inputs
+ year, month, day. If these three represent a valid date, return a logical true, 
+otherwise false. The name of the output argument is valid.
+
+function valid=valid_date(y,m,d)
+valid = false;
+if(((isscalar(y) && y>=1 && y==fix(y))&& (isscalar(m) && m>=1 && m==fix(m) && m<=12)...
+        && (isscalar(d) && d>=1 && d==fix(d) && d<=31))==1)
+    c1= (ismember(m,[4,6,9,11]) && ismember(d,[1:30]));
+    c2=(ismember(m,[1,3,5,7,8,10,12]) && ismember(d,[1:31]));
+    if ((c1==1 || c2==1)==1)
+        valid = true;
+    else
+            if ((mod(y,4)==0&&mod(y,100)~=0 || mod(y,400)==0&&mod(y,100)==0)==1)
+                if (ismember(d,[1:29])==1)
+                    valid = true;
+                end
+                return;
+            else
+                if (ismember(d,[1:28])==1)
+                    valid = true;
+                end
+                return;
+            end
+    end
+end
+
+valid = valid_date(2018,4,1)
+
+valid = valid_date(2018,4,31)
+
+
+
+
+
+
+
+

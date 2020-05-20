@@ -1,0 +1,63 @@
+Write a function called halfsum that takes as input an at most two-dimensional array
+ A and computes the sum of the elements of A that are in the lower right triangular 
+part of A
+
+function summa=halfsum(M)
+[row column]= size(M);
+summa=0;
+sumdiagonal=0;
+sumupper=0;
+for i=1:row 
+    for j=1:column
+    if i==j 
+       sumdiagonal = sum(M(i,j))+ sumdiagonal;
+    end
+    if i<j
+        sumupper = sum(M(i,j)) + sumupper;
+    end
+    summa=sumdiagonal + sumupper;
+    end
+end
+end
+*************************************************************************************
+Practice while-loops
+
+function Q = nextprime(n)
+    if (isprime(n))
+        n=n+1;
+    end
+    while(~isprime(n))
+        n=n+1;
+    end
+    Q=n;
+end
+*****************************************************************************************
+Write a function called freezing that takes a vector of numbers that correspond to
+ daily low temperatures in Fahrenheit. Return numfreeze, the number of days with 
+sub freezing temperatures (that is, lower than 32 F) without using loops
+
+function numfreeze = freezing(A) 
+n = logical(A(A<32));
+numfreeze = sum(n); 
+end
+
+numfreeze = freezing([45 21 32 31 51 12])
+*******************************************************************************
+Write a function called max_sum that takes v, a row vector of numbers, and n, a 
+positive integer as inputs. The function needs to find the n consecutive elements
+ of v whose sum is the largest possible.
+
+function [summa, index]=max_sum(b,n)
+y=length(b)
+    if n>y
+        summa=0;
+        index=-1;
+    else
+        [summa, index] = max(movsum(b, n, 'Endpoints', 'discard'));
+    end
+end 
+
+[summa, index] = max_sum([1 2 3 4 5 4 3 2 1],3)
+
+
+
